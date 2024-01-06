@@ -1,0 +1,203 @@
+@import 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css';
+@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
+
+.header-desktop {
+  background-color: #9cbcbd;
+  padding: 20px;
+}
+
+body {
+  background: #f5f5f5;
+}
+
+a {
+  cursor: pointer;
+}
+
+.navbar {
+  margin-bottom: 30px;
+}
+
+
+.card {
+  border: none;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+  margin-bottom: 30px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-body {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+
+.card-title {
+  margin-bottom: 0;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+  .custom-button-edit {
+    background-color: #6c9192;
+    color: #fff;
+border-color: #6c9192;
+transition: transform 0.3s ease;
+  }
+  
+  .custom-button-delete {
+    background-color: #c3c6c6;
+    transition: transform 0.3s ease;
+  }
+  
+  .custom-button-edit,
+  .custom-button-delete {
+    margin-right: 5px;
+  }
+  
+  .custom-button-edit:hover,
+  .custom-button-delete:hover {
+    transform: scale(1.05);
+  }
+
+  .card-fixed-height {
+    height: 300px; /* Schimbați această valoare cu înălțimea dorită */
+    width: 270px;
+    overflow: hidden;
+  }
+  
+  .d-flex {
+    display: flex;
+  }
+  
+  .align-items-center {
+    align-items: center;
+  }
+  
+  .flex-grow-1 {
+    flex-grow: 1;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+
+  .security-btn {
+    position:relative;
+    min-width:95px;
+    color:#fff;
+    background:#9cbcbd;
+    margin-left: 10px;
+      border: none;
+      border-radius: 20px;
+      background: #6c9192;
+      padding: 10px 20px;
+      cursor: pointer;
+  }
+  
+  .security-btn:hover {
+    background: #526f70;
+  }
+
+  #main-container {
+    padding-top: 100px;
+  }
+
+  .btn-group {
+    margin-top: 10px;
+  }
+  
+  .w-60 {
+    width: 85px;
+  }
+  
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 0 10px;
+    font-weight: 600;
+  }
+  
+  .social-links li a {
+    -webkit-border-radius: 50%;
+    background-color: rgba(89, 206, 181, .85);
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 30px;
+    font-size: 12px;
+  }
+  
+  a {
+    color: #707070;
+  }
+  
+  
+  a {
+  color: white;
+  }
+  .login-status-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  
+  
+  .links {
+    display: flex;
+    align-items: center;
+  }
+
+ 
+  .list-group-item {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    word-wrap: break-word;
+  }
+  
+  .list-group-item i {
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+  
+  .list-group-item span {
+    margin-left: 1px;
+  }
+  
+  .fixed-bottom {
+    position: fixed;
+    bottom: 20px; 
+    left: 20px; 
+    z-index: 999; 
+  }
+  
+  .custom-search-form {
+    margin-left: 200px; /* Ajustați această valoare după preferință pentru a muta butonul mai la stânga */
+  }
+  
+  
+
+
+
+
+

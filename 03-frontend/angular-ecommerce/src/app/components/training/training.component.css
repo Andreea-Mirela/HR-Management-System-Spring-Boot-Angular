@@ -1,0 +1,361 @@
+.header-desktop {
+    background-color: #9cbcbd;
+    padding: 20px;
+  }
+  
+  .page-container {
+    min-height: 100vh;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+  .page-wrapper {
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  
+  .login-status-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .security-btn {
+    position:relative;
+    min-width:95px;
+    color:#fff;
+    background:#9cbcbd;
+    margin-left: 10px;
+      border: none;
+      border-radius: 20px;
+      background: #6c9192;
+      padding: 10px 20px;
+      cursor: pointer;
+  }
+  
+  .security-btn:hover {
+    background: #526f70;
+  }
+  
+  .links {
+    display: flex;
+    align-items: center;
+  }
+  .mt-auto {
+    margin-top: auto;
+    padding-top: 350px;
+  }
+  .custom-link {
+      color: blue;
+  }
+  #main-container {
+    padding-top: 100px;
+  }
+  
+  .custom-button-edit {
+    background-color: #6c9192;
+    color: #fff;
+  border-color: #6c9192;
+  transition: transform 0.3s ease;
+  }
+  
+  .custom-button-delete {
+    background-color: #c3c6c6;
+    transition: transform 0.3s ease;
+  }
+  
+  .custom-button-edit,
+  .custom-button-delete {
+    margin-right: 5px;
+  }
+  
+  .custom-button-edit:hover,
+  .custom-button-delete:hover {
+    transform: scale(1.05);
+  }
+  
+  .fixed-bottom {
+    position: fixed;
+    bottom: 20px; 
+    left: 20px; 
+    z-index: 999; 
+  }
+  
+  
+  .card-img-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1.25rem;
+  }
+  
+  
+  
+  .card-text {
+    color: #333;
+  }
+  
+  .card .btn {
+    margin: 5px 2px;  /* Adaugă un pic de spațiu între butoane. */
+  }
+  
+  .card .btn i {
+    margin-right: 5px;  /* Adaugă un pic de spațiu între iconiță și textul butonului. */
+  }
+  
+  .support-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+  }
+  
+  .support-item i {
+    margin-right: 5px;
+  }
+  
+  .support-item a {
+    color: #007bff;
+  }
+  
+  .card-image-container {
+    position: relative;
+    height: 200px;  /* Ajustează înălțimea conform necesităților tale */
+  }
+  
+  .card-image-container {
+    position: relative;
+    height: 200px;  /* Ajustează înălțimea conform necesităților tale */
+  }
+  
+  .card-img-top {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;  /* Acesta se asigură că imaginea își păstrează proporțiile */
+  }
+  
+  .card-img-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;  /* Poziționează conținutul mai jos pe imagine. */
+    padding-bottom: 20px;  /* Crește spațiu la baza imaginii. */
+  }
+  
+  .card-title {
+    position: absolute;
+    bottom: 0; /* Modificăm top în bottom */
+    left: 0;
+    right: 0;
+    padding: 10px;
+    font-size: 1.25rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    opacity: 0.8;
+    text-align: center;
+  }
+  
+  .card-type {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #555;
+    text-align: center; /* Adăugată pentru a centra textul */
+    margin-bottom: 10px;
+    font-family: "Arial", sans-serif;
+  }
+  
+  .card-description {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #888;
+    text-align: justify;
+    overflow-wrap: break-word; /* Permite împărțirea cuvintelor în cazul în care textul este prea lung */
+    line-height: 1.2rem;
+    font-family: "Open Sans", sans-serif;
+  }
+  
+  .card-text {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Adăugat pentru a alinia elementele în partea dreaptă */
+    margin-left: 5px;
+  }
+  
+  .card-text i {
+    color: #6c757d;
+    margin-right: 7px; /* Ajustat pentru a adăuga un spațiu între pictogramă și text */
+  }
+  
+  .card-mini {
+    margin-bottom: 10px; /* Adaugă un spațiu între fiecare material */
+  }
+  
+  
+  .card-mini i {
+    animation: pulse 2s infinite; /* Aplică animația "pulse" pe pictograme */
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2); /* Mărește ușor dimensiunea pictogramei */
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  
+  .card-mini:hover {
+    transform: scale(1.05); /* Mărește ușor dimensiunea elementului */
+    transition: transform 0.3s ease; /* Adaugă o tranziție lină a efectului de mărire */
+  }
+  
+  
+  .resource-link {
+    color: #337ab7;
+    text-decoration: none;
+  }
+  
+  .resource-link:hover {
+    text-decoration: underline;
+  }
+  
+  .training-card {
+    position: relative;
+    overflow: hidden; /* Ascunde orice conținut care iese în afara cardului */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+  }
+  
+  
+  
+  .training-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Mărește umbrirea la hover */
+  }
+  
+  .card-footer {
+    background-color: #f8f9fa; /* Setează culoarea fundalului pentru partea de jos a cardului */
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .card-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .card-buttons .btn {
+    position: relative;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #6c9192;
+    border: none;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    margin: 5px;
+  }
+  
+  .card-buttons .btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: left 0.3s ease;
+  }
+  
+  .card-buttons .btn:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-buttons .btn:hover:before {
+    left: 0;
+  }
+  
+  
+  .card-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #FFD700, #FFA500); /* Ajustează culorile gradientului conform preferințelor tale */
+    opacity: 0.7;
+    z-index: -1;
+    animation: gradient-animation 5s infinite; /* Aplică animația de gradient */
+  }
+  
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%; /* Ajustează poziția de start a gradientului */
+    }
+    50% {
+      background-position: 100% 50%; /* Ajustează poziția de mijloc a gradientului */
+    }
+    100% {
+      background-position: 0% 50%; /* Ajustează poziția finală a gradientului */
+    }
+  }
+  
+  .custom-row {
+    margin-left: 85px;
+  }
+  
+  .top-card {
+    margin-bottom: 15px; /* Ajustați valoarea pentru spațiul dorit */
+  }
+  
+  .bottom-card {
+    margin-top: 15px; /* Ajustați valoarea pentru spațiul dorit */
+  }
+  
+  .card-description {
+    max-height: 60px; /* Ajustați înălțimea dorită pentru descriere scurtă */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: max-height 0.3s ease;
+  }
+  
+  .card-description.expanded {
+    max-height: none;
+  }
+  
+  .btn-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+  
+  .btn-link:focus {
+    outline: none;
+    box-shadow: none;
+    color: #0056b3;
+    text-decoration: none;
+  }
+  

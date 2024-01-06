@@ -1,0 +1,71 @@
+<div class="page-wrapper">
+  <!-- MENU SIDEBAR-->
+  <aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+      <a routerLink="shop/products">
+        <img src="assets/images/logo.png" alt="luv2shop" class="img-responsive">
+      </a>
+    </div>
+    <div class="menu-sidebar-content js-scrollbar1">
+      <nav class="navbar-sidebar">
+          <ul class="list-unstyled navbar-list">
+            <li>
+              <a >
+                <i class="fas fa-file-alt"></i> Proceduri
+              </a>
+            </li>            
+            <li>
+              <a>
+                <i class="fas fa-exclamation-circle"></i>Actualizări
+              </a>
+            </li>
+            <li class="fixed-bottom">
+              <a routerLink="/employeePortal">
+                 <i class="fas fa-arrow-left"></i> Înapoi
+              </a>
+            </li>
+          </ul>
+      </nav>
+    </div>
+  </aside>
+  <!-- END MENU SIDEBAR-->
+
+  <div class="main-content">
+     <!-- HEADER DESKTOP-->
+     <header class="header-desktop">
+        <div class="section-content section-content-p30">
+          <div class="container-fluid">
+            <div class="header-wrap">
+              <h1 class="header-intro-text">
+                
+              </h1>
+            </div>
+          </div>
+        </div>
+      </header>
+    <!-- END HEADER DESKTOP-->
+
+    <!-- PDF CONTENT-->
+    <div class="pdf-content flex-container">
+      <div>
+        <img src="assets/images/documents.png" alt="Company Logo" style="height: 100px;">
+        <h3>Generare adeverințe de angajat</h3>
+        <hr>
+      </div>
+      <div class="select-doc-content">
+        <p>Aici puteți descărca diverse adeverințe necesare. Alegeți tipul dorit mai jos.</p>
+        <select [(ngModel)]="selectedDocumentType" class="select-document-type">
+          <option value="employment">Adeverință de angajare</option>
+          <option value="salary">Adeverință de salariu</option>
+          <!-- Adăugați aici alte tipuri de adeverințe -->
+        </select>
+        <button class="security-btn" (click)="downloadPDF()">Descarca adeverinta PDF</button>
+      </div>
+      <div class="extra-info">
+        <h4>Informații utile</h4>
+        <p>Puteți utiliza aceste adeverințe pentru diverse formalități. Ele sunt generate automat și conțin datele actuale din sistem.</p>
+      </div>
+    </div>
+    <!--<router-outlet></router-outlet>-->
+  </div>
+</div>

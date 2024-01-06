@@ -1,0 +1,54 @@
+
+<!-- Butoane de acțiune într-un grup -->
+<div class="d-flex justify-content-center my-4 ">
+  <button class="btn btn-info m-2" (click)="showLatestSession()">
+    <i class="bi bi-info-circle-fill"></i> <!-- Icoană info -->
+  </button>
+
+  <button class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#scheduleVideoSessionModal">
+    <i class="bi bi-plus-circle-fill"></i> <!-- Icoană plus -->
+    Programează Sesiune Video
+  </button>
+
+  <button class="btn btn-primary m-2" (click)="openJitsiContainer()">
+    <i class="bi bi-box-arrow-up-right"></i> <!-- Icoană deschidere -->
+    Deschide Sesiune Video
+  </button>
+
+  <button class="btn btn-danger m-2" (click)="closeJitsiContainer()">
+    <i class="bi bi-x-circle-fill"></i> <!-- Icoană închidere -->
+    Închide Sesiune Video
+  </button>
+</div>
+
+<!-- Conținut video -->
+<div id="jitsi-container" [hidden]="!isJitsiOpen" class="container-fluid my-4" style="width: 100%; height: 80vh;"></div>
+
+<!-- Fereastra modală pentru programarea unei sesiuni video -->
+<div class="modal fade" id="scheduleVideoSessionModal" tabindex="-1" aria-labelledby="scheduleVideoSessionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="scheduleVideoSessionModalLabel">Programează Sesiune Video</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #videoSessionForm="ngForm" (ngSubmit)="onSubmit(videoSessionForm)">
+          <div class="mb-3">
+            <label for="sessionDateTime" class="form-label">Data și ora sesiunii</label>
+            <input type="datetime-local" class="form-control" id="sessionDateTime" name="sessionDateTime" [(ngModel)]="sessionDateTime" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Parolă</label>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required>
+          </div>
+          <div class="mb-3">
+            <label for="inviteeEmail" class="form-label">Invitați</label>
+            <input type="email" class="form-control" id="inviteeEmail" name="inviteeEmail" [(ngModel)]="inviteeEmail1" required>
+          </div>          
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Programare</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="pdf-container">
+  <div class="text-col">
+      <h1 class="pdf-title">Modul de Instruire pentru Angajați</h1>
+      <p class="pdf-description">
+          Bine ați venit la modulul de instruire pentru angajați, pus la dispoziție de echipa noastră de Resurse Umane.
+          Acest document PDF conține informațiile esențiale necesare pentru a vă familiariza cu politica și procedurile companiei noastre.
+          <br>Acesta include, de asemenea, ghiduri utile pentru dezvoltarea abilităților necesare rolului dumneavoastră specific în cadrul organizației.
+          Vă încurajăm să citiți cu atenție acest material și să reveniți la el ori de câte ori aveți nevoie de clarificări. De asemenea, sunteți încurajați să discutați orice întrebări sau preocupări pe care le puteți avea cu managerul dumneavoastră sau cu echipa de Resurse Umane.
+          <br>Ne străduim să vă oferim cele mai bune resurse și sperăm că veți găsi acest material util și instructiv. Sperăm că acest modul de instruire vă va ajuta să vă simțiți mai încrezători și mai pregătiți în rolul dumneavoastră.
+
+        </p>
+      
+  </div>
+  <div class="pdf-notes-col">
+      <div class="pdf-viewer-container">
+        <h2>Suport teoretic</h2>
+          <pdf-viewer style="display: block; min-height: 600px" *ngIf="src" [src]="src"></pdf-viewer>
+      </div>
+      <div class="notes-container">
+          <h2>Notițe personale</h2>
+          <textarea #content class="notes-textarea" [(ngModel)]="userNotes"></textarea>
+          <div class="notes-buttons">
+              <button class="notes-download-btn" (click)="downloadNotes(content)">Descarcă notițele</button>
+          </div>
+      </div>
+  </div>
+</div>

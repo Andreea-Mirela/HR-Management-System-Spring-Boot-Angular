@@ -1,0 +1,180 @@
+<div *ngIf="isLoading" class="loading-screen">
+  <div class="spinner">
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="rect4"></div>
+    <div class="rect5"></div>
+  </div>
+  <h2 class="loading-text">Se încarcă...</h2>
+</div>
+
+
+
+
+<div *ngIf="!isLoading">
+<div  class="page-wrapper">
+    <!-- MENU SIDEBAR-->
+    <aside class="menu-sidebar d-none d-lg-block">
+      <div class="logo">
+        <a routerLink="shop/products">
+          <img src="assets/images/logo.png" alt="luv2shop" class="img-responsive">
+        </a>
+      </div>
+    
+      <div class="menu-sidebar-content js-scrollbar1">
+        <nav class="navbar-sidebar">
+          <ul class="list-unstyled navbar-list">
+            
+            <li>
+              <a href="#">
+                <i ></i>
+              </a>
+            </li>
+            <li>
+              <a >
+                <i class="fas fa-home"></i> Acasă
+              </a>
+            </li>            
+            <li>
+              <a (click)="openModal()">
+                <i class="fas fa-info-circle"></i> Despre noi
+              </a>
+            </li>
+            <li>
+              <a (click)="openModal()">
+                <i class="fas fa-users"></i> Cultură
+              </a>
+            </li>
+            <li>
+              <a (click)="openModal()">
+                <i class="fas fa-link"></i> Resurse
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+    
+    <!-- END MENU SIDEBAR-->
+  
+    <div >
+       <!-- HEADER DESKTOP-->
+       <header class="header-desktop">
+        <div class="section-content section-content-p30">
+          <div class="container-fluid">
+            <div class="header-wrap">
+              <h1 class="header-intro-text">
+                Bine ai venit, {{ userFullName }}!
+              </h1>
+            </div>
+          </div>
+        </div>
+        <div class="links">
+          <button (click)="logout()" class="logout-btn">Deconectare</button>
+        </div>
+      </header>
+      
+      <!-- END HEADER DESKTOP-->
+  
+      <!-- MAIN CONTENT-->
+      <div class="portal-container">
+        <div class="portal-card" *ngIf="canAccessEmployeePortal">
+            <img src="/assets/images/empl.jpg" class="portal-image">
+            <h2 class="portal-title">Portal Angajat</h2>
+            <button routerLink="/employeePortal" class="security-btn">Acces</button>
+        </div>
+
+        <div class="portal-card" *ngIf="canAccessHRPortal">
+            <img src="assets/images/hrspec1.jpg" class="portal-image">
+            <h2 class="portal-title">Portal Specialist HR</h2>
+            <button routerLink="/hrPortal" class="security-btn">Acces</button>
+        </div>
+
+        <div class="portal-card" *ngIf="canAccessAdminPortal">
+            <img src="assets/images/admin1.jpg" class="portal-image">
+            <h2 class="portal-title">Portal Administrator</h2>
+            <button routerLink="/adminPortal" class="security-btn">Acces</button>
+        </div>
+    </div>
+    <!--<router-outlet></router-outlet>-->
+    </div>
+</div>
+<!-- Modal -->
+
+<!-- Modal -->
+<div class="modal" [class.show]="showModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Despre noi - Galerie foto</h5>
+        <button type="button" class="close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body scrollable-modal">
+        <div class="scrollable-content">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="about-us-item">
+                <img src="assets/images/logo.png" alt="Descriere 1" class="about-us-image">
+                <p class="about-us-description">Logo-ul nostru reprezintă esența valorilor noastre corporative. Simbolul HRLink combină eleganța și puterea, ilustrând angajamentul nostru față de inovare, excelență și succes. Este o emblemă care reflectă identitatea noastră și ne reprezintă. </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="about-us-item">
+                <img src="assets/images/p7.jpg" alt="Descriere 2" class="about-us-image">
+                <p class="about-us-description">Sediul nostru este un loc plin de profesionalism și eficiență, în care ideile se transformă în realitate și se creează o atmosferă de succes.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="about-us-item">
+                <img src="assets/images/p2.jpg" alt="Descriere 3" class="about-us-image">
+                <p class="about-us-description">Birourile noastre moderne și inspiraționale stimulează creativitatea și colaborarea între echipă.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="about-us-item">
+                <img src="assets/images/p3.jpg" alt="Descriere 3" class="about-us-image">
+                <p class="about-us-description">Ne străduim să aducem idei revoluționare la viață, transformând industria în care activăm.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="about-us-item">
+                <img src="assets/images/p0.jpg" alt="Descriere 3" class="about-us-image">
+                <p class="about-us-description">Dezvoltăm relații puternice cu clienții noștri, înțelegându-le nevoile și oferindu-le soluții personalizate.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="about-us-item">
+                <img src="assets/images/p4.jpg" alt="Descriere 3" class="about-us-image">
+                <p class="about-us-description">Suntem mândri de proiectele noastre inovatoare, care aduc un impact pozitiv asupra societății.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="about-us-item">
+                <img src="assets/images/p5.jpg" alt="Descriere 3" class="about-us-image">
+                <p class="about-us-description">Fiecare zi aduce provocări și oportunități noi, iar noi suntem gata să le abordăm cu pasiune și determinare.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="about-us-item">
+                <img src="assets/images/p6.jpg" alt="Descriere 3" class="about-us-image">
+                <p class="about-us-description">Investim în dezvoltarea personală a angajaților noștri, pentru a ne menține în fruntea industriei.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="about-us-item">
+                <img src="assets/images/p8.jpg" alt="Descriere 3" class="about-us-image">
+                <p class="about-us-description">Fiecare zi aduce provocări și oportunități noi, iar noi suntem gata să le abordăm cu pasiune și determinare..</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+

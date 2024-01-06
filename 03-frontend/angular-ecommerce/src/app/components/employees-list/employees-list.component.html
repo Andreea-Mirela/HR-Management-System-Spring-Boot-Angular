@@ -1,0 +1,227 @@
+<div  class="page-wrapper">
+
+   <!-- MENU SIDEBAR-->
+   <aside class="menu-sidebar d-none d-lg-block">
+     <div class="logo">
+       <a routerLink="shop/products">
+         <img src="assets/images/logo.png" alt="luv2shop" class="img-responsive">
+       </a>
+     </div>
+ 
+     <div>
+       <!-- <app-product-category-menu></app-product-category-menu> -->
+     
+       <div class="menu-sidebar-content js-scrollbar1">
+         <nav class="navbar-sidebar">
+           <ul class="list-unstyled navbar-list">
+            <li>
+               <a >
+                 <i class="fa fa-question-circle"></i> Întrebări
+               </a>
+             </li>            
+             <li>
+               <a>
+                 <i class="fas fa-book-open"></i>Ghid
+               </a>
+             </li>
+            <li>
+               <a routerLink="/hrPortal" class="fixed-bottom">
+                  <i class="fas fa-arrow-left"></i> Înapoi
+               </a>
+           </li>
+           
+         </ul>
+         
+         </nav>
+     </div>
+   </div>
+ 
+   </aside>
+   <!-- END MENU SIDEBAR-->
+ 
+   <div class="page-container">
+      <!-- HEADER DESKTOP-->
+      <header class="header-desktop">
+       <div class="section-content section-content-p30">
+         <div class="container-fluid">
+           <div class="header-wrap">
+             <div class="login-status-header">
+               <div class="links">
+                   <button class="security-btn ml-1" (click)="onOpenModal(null!, 'add')">Adaugă Angajat <span class="sr-only">(current)</span></button>
+               </div>
+               <form class="form-inline my-2 my-lg-0 custom-search-form">
+                  <input type="search" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel
+                   name="key" id="searchName" class="form-control mr-sm-2" placeholder="Caută angajați..." required>
+               </form>
+               <!--<button (click)="logout()" class="security-btn" >Logout</button>-->
+           </div>
+           <div class="account-wrap"></div>
+         </div>
+       </div>
+       </div>
+     </header>
+     <!-- END HEADER DESKTOP-->
+ 
+     <!-- MAIN CONTENT-->
+   <!--<router-outlet></router-outlet>-->
+   
+    <div class="container" id="main-container">
+    <div class="row">
+      <div *ngFor="let employee of employees" class="col-md-6 col-xl-3">
+         <div class="card m-b-30 card-fixed-height">
+            <div class="card-body row">
+               <div class="col-6">
+                  <a href=""><img src="{{employee?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
+               </div>
+               <div class="col-6 card-title align-self-center mb-0">
+                  <h5>{{employee?.name}}</h5>
+                  <p class="m-0">{{employee?.jobTitle}}</p>
+               </div>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" style="font-size: 15px;"><i class="fa fa-envelope  " ></i> {{employee?.email}}</li>
+               <li class="list-group-item" style="font-size: 15px;"><i class="fa fa-phone  " ></i>Telefon : {{employee?.phone}}</li>
+            </ul>
+            <div class="card-body">
+               <div class="float-right btn-group btn-group-sm">
+                  <a (click)="onOpenModal(employee, 'edit')" class="btn btn-primary tooltips custom-button-edit" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                  <a (click)="onOpenModal(employee, 'delete')" class="btn btn-secondary tooltips custom-button-delete" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+               </div>
+            </div>
+         </div>
+      </div>
+    </div>
+    <!-- Add Employee Modal -->
+    <div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="addEmployeeModalLabel">Adaugă Angajat</h5>
+               <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <form #addForm="ngForm" (ngSubmit)="onAddEmloyee(addForm)">
+               <div class="form-group">
+                  <label for="name">Nume Prenume</label>
+                  <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Nume Prenume" required>
+               </div>
+               <div class="form-group">
+                  <label for="email">Adresa e-mail</label>
+                  <input type="email" ngModel name="email" class="form-control" id="email" placeholder="Adresa e-mail" required>
+               </div>
+               <div class="form-group">
+                  <label for="phone">Denumire funcție</label>
+                  <input type="text" ngModel name="jobTitle" class="form-control" id="jobTile" placeholder="Denumire funcție" required>
+               </div>
+               <div class="form-group">
+                  <label for="phone">Număr de telefon</label>
+                  <input type="text" ngModel name="phone" class="form-control" id="phone" placeholder="Număr de telefon" required>
+               </div>
+               <div class="form-group">
+                  <label for="phone">URL Imagine</label>
+                  <input type="text" ngModel name="imageUrl" class="form-control" id="imageUrl" placeholder="URL Imagine" required>
+               </div>
+               <div class="form-group">
+                  <label for="roles">Roluri asociate</label>
+                  <div *ngFor="let role of roles">
+                     <input type="checkbox" [value]="role.id" (change)="onRoleCheckboxChange($event, role.id)" name="roles" id="role-{{role.id}}">
+                     <label for="role-{{role.id}}">{{role.name}}</label>
+                  </div>
+              </div>
+              
+               <div class="form-group">
+                  <label for="createOktaAccount">Necesită Cont Okta</label>
+                  <input type="checkbox" ngModel name="createOktaAccount" class="form-check" id="createOktaAccount">
+               </div>
+               <div class="modal-footer">
+                  <button type="button" id="add-employee-form" class="btn btn-secondary" data-bs-dismiss="modal">Anulează</button>
+                  <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Salvează</button>
+               </div>
+               </form>
+            </div>
+         </div>
+       </div>
+       </div>
+     
+     <!-- Edit Modal -->
+     <div class="modal fade" id="updateEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeEditModalLabel" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+          <div class="modal-content">
+             <div class="modal-header">
+                <h5 class="modal-title" id="updateEmployeeModalLabel">Editează Angajat {{editEmployee?.name}}</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+             </div>
+             <div class="modal-body">
+                <form #editForm="ngForm">
+                   <div class="form-group">
+                      <label for="name">Nume Prenume</label>
+                      <input type="text" ngModel="{{editEmployee?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
+                   </div>
+                   <input type="hidden" ngModel="{{editEmployee?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+                   <input type="hidden" ngModel="{{editEmployee?.employeeCode}}" name="userCode" class="form-control" id="userCode" placeholder="Email">
+                   <div class="form-group">
+                      <label for="email">Adresa e-mail</label>
+                      <input type="email" ngModel="{{editEmployee?.email}}" name="email" class="form-control" id="email" placeholder="Email">
+                   </div>
+                   <div class="form-group">
+                      <label for="phone">Denumire funcție</label>
+                      <input type="text" ngModel="{{editEmployee?.jobTitle}}" name="jobTitle" class="form-control" id="jobTitle" placeholder="Job title">
+                   </div>
+                   <div class="form-group">
+                      <label for="phone">Număr de telefon</label>
+                      <input type="text" ngModel="{{editEmployee?.phone}}" name="phone" class="form-control" id="phone" name="phone" placeholder="Phone">
+                   </div>
+                   <div class="form-group">
+                      <label for="phone">URL Imagine</label>
+                      <input type="text" ngModel="{{editEmployee?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
+                   </div>
+                   <div class="modal-footer">
+                      <button type="button" id="" data-bs-dismiss="modal" class="btn btn-secondary">Anulează</button>
+                      <button (click)="onUpdateEmloyee(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Salvează</button>
+                   </div>
+                </form>
+             </div>
+          </div>
+       </div>
+     </div>
+     
+     <!-- Delete Modal -->
+     <div class="modal fade" id="deleteEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+          <div class="modal-content">
+             <div class="modal-header">
+                <h5 class="modal-title" id="deleteModelLabel">Șterge angajat</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+             </div>
+             <div class="modal-body">
+                <p>Sunteți sigur că doriți să ștergeți angajatul {{deleteEmployee?.name}}?</p>
+                <div class="modal-footer">
+                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nu</button>
+                   <button (click)="onDeleteEmloyee(deleteEmployee?.id!)" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+                </div>
+             </div>
+          </div>
+       </div>
+     </div>
+     </div>
+     
+     <!-- Notification for no employees -->
+     <div *ngIf="employees?.length == 0" class="col-lg-12 col-md-12 col-xl-12" style="margin-left: 105px;">
+     <div class="alert alert-info" role="alert">
+       <h4 class="alert-heading">NO EMPLOYEES!</h4>
+       <p>No Employees were found.</p>
+     </div>
+     </div>
+
+     
+   </div>
+ </div>
+
+
+ 

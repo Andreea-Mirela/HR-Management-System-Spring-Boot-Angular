@@ -1,0 +1,67 @@
+<div class="container mt-5 quiz-container">
+    <div class="card quiz-card">
+        <div class="d-flex justify-content-between p-3 quiz-header">
+            <div class="image"></div>
+            <div>
+                <h4 class="quiz-title">Quiz!</h4>
+            </div>
+        </div>
+
+        <ng-container *ngIf="!isQuizCompleted">
+            <div class="d-flex justify-content-around py-3 quiz-status">
+                <div class="score">
+                    <h5>{{points}} Puncte</h5>
+                </div>
+                <div class="question-remain">
+                    <span>Întrebarea {{currentQuestion+1}} din {{questionList.length}}</span>
+                </div>
+                <div class="timer">
+                    <h5>{{counter}} sec ⏱</h5>
+                </div>
+            </div>
+            <div class="progress mb-3">
+                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [ngStyle]="{'width':progress+'%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="question">
+                <div class="card question-card">
+                    <h3>{{questionList[currentQuestion]?.questionText}}</h3>
+                </div>
+            </div>
+            <div class="options">
+                <ul class="option-list" *ngFor="let option of questionList[currentQuestion]?.options">
+                    <li (click)="answer(currentQuestion+1,option)">
+                        <div appChangeBg [isCorrect]="option.correct" class="card option-card">
+                            {{option.text}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex justify-content-between navigation-buttons">
+                <button [disabled]="currentQuestion===0" class="btn nav-btn" (click)="previousQuestion()"><i class="fa text-primary fa-chevron-left fa-3x" aria-hidden="true"></i></button>
+                <button class="btn nav-btn" (click)="resetQuiz()"><i class="fa fa-refresh text-primary fa-3x" aria-hidden="true"></i></button>
+                <button class="btn nav-btn" (click)="nextQuestion()"><i class="fa text-primary fa-chevron-right fa-3x" aria-hidden="true"></i></button>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="isQuizCompleted">
+            <div class="results-section text-center">
+                <img class="results-image mx-auto d-block" src="/assets/images/medal.png" alt="">
+                <div class="result">
+                    <h3 class="results-heading">Felicitări!! <br>Ai terminat quizul. <br>Rezultatele tale sunt:</h3>
+                    <div class="result-stats">
+                        <p>Total Întrebări Abordate : {{questionList.length}} </p>
+                        <p>Total Răspunsuri Corecte : {{correctAnswer}} </p>
+                        <p>Total Răspunsuri Greșite : {{inCorrectAnswer}} </p>
+                        <p>Scorul Tău : {{points}} Puncte </p>
+                        <p>Punctajul Tău Total : {{totalScore}} Puncte </p>
+                    </div>
+                    <button class="btn btn-success result-button mt-4" (click)="downloadCertificate()">Descarcă Diploma</button>
+                    <button routerLink="/shop" class="btn btn-warning result-button mt-4">Revendică Recompense</button>
+                </div>
+            </div>
+        </ng-container>
+        
+        
+        
+    </div>
+</div>

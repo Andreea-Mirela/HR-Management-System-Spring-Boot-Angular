@@ -1,0 +1,71 @@
+.container.quiz-container {
+    background: linear-gradient(to right, #f8f9fa, #e3f2fd);
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    animation: slideIn 1s ease-out;
+}
+
+.welcome-title {
+    color: #007bff;
+    font-size: 2.5em;
+    animation: bounceIn 1s ease-out;
+}
+
+.rules-title {
+    color: #343a40;
+    font-size: 2em;
+    animation: bounceIn 1s ease-out 0.5s;
+}
+
+.quiz-rules {
+    list-style: none;
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+.quiz-rules li {
+    margin-bottom: 0.5em;
+    animation: bounceIn 1s ease-out 1s;
+    position: relative;
+}
+
+.quiz-rules li::before {
+    content: "•";
+    color: #007bff;
+    position: absolute;
+    left: -1em;
+    top: 0;
+}
+
+.good-luck-message {
+    font-family: 'Permanent Marker', cursive;
+    color: #28a745;
+    font-size: 2em;
+    animation: bounceIn 1s ease-out 1.5s;
+}
+
+.start-btn {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border-radius: 50px;
+    transition: background 0.3s;
+    animation: bounceIn 1s ease-out 2s;
+}
+
+.start-btn:hover {
+    background: #0056b3;
+}
+
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateY(10%); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+    0% { opacity: 0; transform: scale(0.85); }
+    50% { transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}

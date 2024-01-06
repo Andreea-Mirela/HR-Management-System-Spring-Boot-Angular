@@ -1,0 +1,16 @@
+.jitsi-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jitsi-container.large {
+  height: 80vh;
+}
+
+.my-background {
+  background-color: #ADD8E6; /* Albastru deschis */
+}
+

@@ -1,0 +1,12 @@
+.navbar-sidebar .navbar-list li a.hover-underline:hover {
+    text-decoration: underline !important;
+}
+.navbar-sidebar .navbar-list li a.hover-underline, .navbar-sidebar .navbar-list li a.active-underline {
+    text-decoration: none !important;
+}
+.fixed-bottom {
+    position: fixed;
+    bottom: 20px; 
+    left: 20px; 
+    z-index: 999; 
+  }

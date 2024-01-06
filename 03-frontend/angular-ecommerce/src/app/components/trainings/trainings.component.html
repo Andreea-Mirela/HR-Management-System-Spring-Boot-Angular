@@ -1,0 +1,339 @@
+<div  class="page-wrapper">
+  <!-- MENU SIDEBAR-->
+   <aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+      <a routerLink="shop/products">
+        <img src="assets/images/logo.png" alt="luv2shop" class="img-responsive">
+      </a>
+    </div>
+    <div>
+      <!-- <app-product-category-menu></app-product-category-menu> -->
+      <div class="menu-sidebar-content js-scrollbar1">
+        <nav class="navbar-sidebar">
+          <ul class="list-unstyled navbar-list">
+           <li>
+              <a >
+                <i class="fa fa-question-circle"></i> Întrebări
+              </a>
+            </li>            
+            <li>
+              <a>
+                <i class="fas fa-book-open"></i>Ghid
+              </a>
+            </li>
+           <li>
+              <a routerLink="/hrPortal" class="fixed-bottom">
+                 <i class="fas fa-arrow-left"></i> Înapoi
+              </a>
+          </li>
+        </ul>
+        </nav>
+    </div>
+  </div>
+  </aside>
+  <!-- END MENU SIDEBAR-->
+  
+    <div class="page-container">
+       <!-- HEADER DESKTOP-->
+       <header class="header-desktop">
+        <div class="section-content section-content-p30">
+          <div class="container-fluid">
+            <div class="header-wrap">
+  
+
+  
+              <!--<app-login-status></app-login-status>-->
+              
+              <div class="login-status-header">
+                <div class="links">
+                  <button class="security-btn ml-1"  (click)="onOpenModal(null!, 'add')">Adaugă Training <span class="sr-only">(current)</span></button>
+
+                </div>
+                <form class="form-inline my-2 my-lg-0">
+                  <input type="search" (ngModelChange)="searchTrainings(key.value)" #key="ngModel" ngModel
+                   name="key" id="searchTitle" class="form-control mr-sm-2" placeholder="Caută Training..." required>
+                </form>
+                <!--<button (click)="logout()" class="security-btn" >Logout</button>-->
+            </div>
+            
+            
+            <div class="account-wrap"></div>
+          </div>
+        </div>
+        </div>
+      </header>
+      <!-- END HEADER DESKTOP-->
+  
+      <!-- MAIN CONTENT-->
+
+<div class="container" id="main-container">
+  <div class="row custom-row" >
+    
+    <div *ngFor="let training of trainings; let i = index" class="col-md-4">
+     
+
+      <div class="card training-card {{ i < 3 ? 'top-card' : 'bottom-card' }}">
+        <div class="card-image-container">
+          <img [src]="getLogoUrl(training)" alt="" class="card-img-top">
+          <div class="card-img-overlay">
+            <h5 class="card-title">{{training?.title}}</h5>
+          </div>
+        </div>
+    
+        <div class="card-body">
+          <p class="card-subtitle card-type">{{training?.type}}</p> <!-- Am adăugat clasa card-type pentru stilizare -->
+          <div [ngClass]="{'expanded': isDescriptionExpanded(i)}" class="card-description">
+            <p>{{ training?.description }}</p>
+          </div>
+          <button class="btn btn-link" (click)="toggleDescription(i)">
+            {{ isDescriptionExpanded(i) ? 'Afișează mai puțin' : 'Afișează mai mult' }}
+          </button>
+          
+          
+
+          <p class="card-text">
+            <i class="fas fa-clock"></i> <!-- Adaugă clasa "fas fa-clock" pentru a afișa pictograma de ceas -->
+            {{training?.time}}
+          </p>
+          
+    
+          <div class="card-resources">
+            <div class="card-mini">
+              <i class="fa fa-file-text"></i>
+              Suport Teoretic :
+              <a target="_blank" class="resource-link" routerLink="/healthTrainingPdf" (click)="onViewTraining(training.id) ">Deschide</a>
+            </div>
+            <div class="card-mini">
+              <i class="fa fa-video-camera"></i>
+              Suport Video :
+              <a target="_blank" class="resource-link" routerLink="/healthTraining" (click)="onViewVideo(training.id) ">Deschide</a>
+            </div>
+            <div class="card-mini">
+              <i class="fa fa-users"></i>
+              Video Conferință :
+              <a target="_blank" class="resource-link" routerLink="/videoconference">Deschide</a>
+            </div>
+          </div>
+    
+          <div class="card-buttons" >
+            <a (click)="onOpenModal(training, 'edit')" class="btn btn-primary tooltips custom-button-edit" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+            <a (click)="onOpenModal(training, 'delete')" class="btn btn-secondary tooltips custom-button-delete" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+            <button (click)="onOpenQuizModal(training.id, 'add')" class="btn btn-info tooltips custom-button-edit" data-placement="top" data-original-title="Asociază Quiz"><i class="fa fa-plus"></i> Quiz</button>
+          </div>
+        </div>
+    
+        <div class="card-footer" *ngIf="(canAccessEmployeeFunctions$ | async)">
+          <button (click)="onOpenQuiz(training.id)" class="btn btn-info tooltips" data-placement="top" data-original-title="Quiz"><i class="fa fa-question-circle"></i></button>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+  crossorigin="anonymous"></script>
+
+  <!-- Add Training Modal -->
+<div class="modal fade" id="addTrainingModal" tabindex="-1" role="dialog" aria-labelledby="addTrainingModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addTrainingModalLabel">Adaugă Training</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form #addForm="ngForm" enctype="multipart/form-data" (ngSubmit)="onAddTraining(addForm)">
+              <div class="form-group">
+                <label for="title">Denumire</label>
+                <input type="text" ngModel name="title" class="form-control" id="title" placeholder="Denumire" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="type">Tip</label>
+                <input type="text" ngModel name="type" class="form-control" id="type" placeholder="Tip" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="time">Durată</label>
+                <input type="text" ngModel name="time" class="form-control" id="time" placeholder="Durată" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="description">Descriere</label>
+                <textarea ngModel name="description" class="form-control" id="description" placeholder="Descriere" required></textarea>
+              </div>
+            
+              <div class="form-group">
+                <label for="logo">Logo</label>
+                <input type="file" name="logo" id="logo" (change)="onLogoFileSelected($event)" required>
+              </div>
+            
+              <div class="form-group">
+                <label for="document">Suport teoretic</label>
+                <input type="file" name="document" id="document" (change)="onDocumentFileSelected($event)" required>
+              </div>
+            
+              <div class="form-group">
+                <label for="video">Suport video</label>
+                <input type="file" name="video" id="video" (change)="onVideoFileSelected($event)" required>
+              </div>
+            
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anulează</button>
+                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Salvează</button>
+
+              </div>
+            </form>
+            
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="updateTrainingModal" tabindex="-1" role="dialog" aria-labelledby="trainingEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateTrainingModalLabel">Editează Training {{editTraining?.title}}</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form #editForm="ngForm" enctype="multipart/form-data" autocomplete="off">
+              <input type="hidden" ngModel="{{editTraining?.id}}" name="id" class="form-control" id="id">
+            
+              <div class="form-group">
+                <label for="title">Denumire</label>
+                <input type="text" ngModel="{{editTraining?.title}}" name="title" class="form-control" id="title" placeholder="Denumire">
+              </div>
+              
+              <div class="form-group">
+                <label for="type">Tip</label>
+                <input type="text" ngModel="{{editTraining?.type}}" name="type" class="form-control" id="type" placeholder="Tip">
+              </div>
+              
+              <div class="form-group">
+                <label for="time">Durată</label>
+                <input type="text" ngModel="{{editTraining?.time}}" name="time" class="form-control" id="time" placeholder="Durată">
+              </div>
+              
+              <div class="form-group">
+                <label for="description">Descriere</label>
+                <textarea ngModel="{{editTraining?.description}}" name="description" class="form-control" id="description" placeholder="Descriere"></textarea>
+              </div>
+            
+              <div class="form-group">
+                <label for="logo">Logo</label>
+                <input autocomplete="false" type="file" name="logo" id="logo" (change)="onLogoFileSelected($event)" required>
+              </div>
+            
+              <div class="form-group">
+                <label for="document">Suport teoretic</label>
+                <input type="file" name="document" id="document" (change)="onDocumentFileSelected($event)" required>
+              </div>
+            
+              <div class="form-group">
+                <label for="video">Suport video</label>
+                <input type="file" name="video" id="video" (change)="onVideoFileSelected($event)" required>
+              </div>
+            
+              <div class="modal-footer">
+                <button type="button" data-bs-dismiss="modal" class="btn btn-secondary">Anulează</button>
+                <button (click)="onUpdateTraining(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Salvează</button>
+              </div>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteTrainingModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModelLabel">Șterge Training</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Sunteți sigur că doriți să ștergeți training-ul {{deleteTraining?.title}}?</p>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <button (click)="onDeleteTraining(deleteTraining.id!)" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Quiz Modal -->
+<div class="modal fade" id="addQuizModal" tabindex="-1" role="dialog" aria-labelledby="addQuizModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="addQuizModalLabel">Adaugă Quiz</h5>
+      <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #addQuizForm="ngForm" (ngSubmit)="onAddQuiz(addQuizForm)">
+        <div class="form-group">
+          <label for="trainingName">Training</label>
+          <select class="form-control" id="trainingName" name="trainingName" [(ngModel)]="selectedTrainingId" required>
+            <option *ngFor="let training of trainings" [ngValue]="training.id">{{ training.title }}</option>
+          </select>
+        </div>
+        <div *ngFor="let question of quizQuestions; index as i">
+          <div class="form-group">
+            <label for="questionText">Întrebarea {{i+1}}</label>
+            <input type="text" [(ngModel)]="question.questionText" name="questionText{{i}}" class="form-control" id="questionText{{i}}" placeholder="Introduceți textul întrebării" required>
+          </div>
+          <div class="form-group">
+            <label for="options">Opțiuni</label>
+            <div *ngFor="let option of question.options; index as j">
+              <div class="form-check">
+                <input type="text" class="form-control" id="option{{ i }}{{ j }}" name="option{{ i }}{{ j }}" [(ngModel)]="option.text">
+                <input type="checkbox" class="form-check-input" id="correct{{ i }}{{ j }}" name="correct{{ i }}{{ j }}" [(ngModel)]="option.correct">
+                <label class="form-check-label" for="correct{{ i }}{{ j }}">Variantă corectă</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="explanation">Explicație</label>
+            <textarea class="form-control" [(ngModel)]="question.explanation" name="explanation{{i}}"></textarea>
+          </div>
+        </div>
+        
+        <button type="button" class="btn btn-secondary" (click)="addQuestion()">Adaugă Întrebare</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anulează</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Salvează</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Notification for no trainings -->
+<div *ngIf="trainings?.length == 0" class="col-lg-12 col-md-12 col-xl-12" style="margin-left: 105px;">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">NO TRAININGS!</h4>
+    <p>No trainings were found.</p>
+  </div>
+</div>
+</div>
+    <!--<router-outlet></router-outlet>-->
+    </div>
+  </div>
+
+
+  
