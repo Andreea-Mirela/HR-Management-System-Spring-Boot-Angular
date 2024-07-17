@@ -4,14 +4,14 @@
 
 HRLink is an advanced system designed to improve how companies manage their employees. It uses modern technology to simplify HR tasks, enhance user access, and boost engagement, ultimately improving business performance.
 
-## Overview
+## 🌐 Overview
 
 HRLink focuses on making employee training and development easier and more effective. The system supports two main user roles:
 
 - **HR Specialists:** Manage employee profiles, assign user roles, and oversee training programs.
 - **Employees:** Access training courses, participate in learning activities, and earn rewards.
 
-### Key Features
+### 🔑 Key Features
 
 #### For HR Specialists:
 - **Flexible Course Management:** Easily create, manage, and organize various training courses with text and video content.
@@ -25,7 +25,7 @@ HRLink focuses on making employee training and development easier and more effec
 - **Rewards System:** Earn points for completing training courses, which can be redeemed for various rewards.
 - **Personal Notes:** Use an integrated notes tool to write down thoughts, questions, or summaries while reviewing content, and download notes as PDFs for future reference.
 
-## Technologies Used
+## 💻 Technologies Used
 
 - **Backend:** Spring Boot, Spring Data JPA, MySQL Driver, Lombok
 - **Frontend:** Angular, Bootstrap
@@ -33,7 +33,7 @@ HRLink focuses on making employee training and development easier and more effec
 - **Authentication:** Okta
 - **Testing:** Postman
 
-## Additional Services Used
+## 🌟 Additional Services Used
 
 HRLink integrates with several external services to enhance functionality and user experience:
 
